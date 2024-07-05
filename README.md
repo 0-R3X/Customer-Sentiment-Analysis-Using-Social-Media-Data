@@ -1,4 +1,4 @@
-**Customer-Sentiment-Analysis-Using-Social-Media-Data**
+# Customer-Sentiment-Analysis-Using-Social-Media-Data
 
 # Project Overview
 This project involves downloading YouTube comments using the Google Client API, processing the data, training a sentiment analysis model, and creating a user interface (UI) with Streamlit for real-time sentiment analysis.
@@ -39,4 +39,22 @@ Troubleshooting
 If the model doesn't load correctly in the Streamlit UI, ensure you have run reinstalling.py to reinstall the necessary libraries and downgrade numpy.
 By following the above steps, you should be able to run the sentiment analysis model and interact with it through the Streamlit UI seamlessly.
 
-# made by R3X
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+made by R3X
