@@ -60,10 +60,12 @@ def main():
     st.markdown("""
         <style>
             .main {
-                background-color: #F5F5F5;
+                background-color: #2E2E2E;
+                color: #E0E0E0;
+                font-family: 'Arial', sans-serif;
             }
             .stButton>button {
-                background-color: #4CAF50;
+                background-color: #FFA726;
                 color: white;
                 padding: 10px 24px;
                 text-align: center;
@@ -72,78 +74,94 @@ def main():
                 font-size: 14px;
                 margin: 4px 2px;
                 cursor: pointer;
+                border: none;
+                border-radius: 5px;
             }
             h1 {
                 font-size: 36px;
-                color: black;
+                color: #FFA726;
             }
             h2 {
                 font-size: 30px;
-                color: black;
+                color: #FFA726;
             }
             h3 {
                 font-size: 24px;
-                color: black;
+                color: #FFA726;
             }
             h4 {
                 font-size: 20px;
-                color: black;
+                color: #FFA726;
             }
             h5 {
                 font-size: 18px;
-                color: black;
+                color: #FFA726;
             }
             h6 {
                 font-size: 16px;
-                color: black;
+                color: #FFA726;
             }
             p {
                 font-size: 14px;
-                color: black;
+                color: #E0E0E0;
+            }
+            .sidebar .sidebar-content {
+                background-color: #424242;
+                color: #E0E0E0;
+            }
+            .sidebar .sidebar-content h2 {
+                color: #FFA726;
             }
         </style>
         """, unsafe_allow_html=True)
 
     st.title('Sentiment Analysis Web App')
-    st.sidebar.title('Navigation')
-    page = st.sidebar.radio('Go to', ('Home', 'Predict', 'About'))
-
-    if page == 'Home':
-        st.header('Home Page')
-        st.subheader('Welcome to the Sentiment Analysis Web App!')
-        st.markdown("""
-            <div style="background-color:#4CAF50;padding:10px;border-radius:10px">
-            <h3 style="color:white;text-align:center;">Analyze the sentiment of your text</h3>
-            </div>
-            <br>
-        """, unsafe_allow_html=True)
-        st.write('This app predicts sentiment (Positive, Negative, Neutral) based on user input.')
-
-    elif page == 'Predict':
-        st.header('Predict Sentiment')
-        text = st.text_area('Enter your comment here:', height=200, placeholder="Type your text here...")
-        if st.button('Predict'):
-            if __model is not None:
-                prediction = get_bias(text)
-                if prediction == "Positive":
-                    st.success(f'Predicted Sentiment: {prediction}')
-                elif prediction == "Negative":
-                    st.error(f'Predicted Sentiment: {prediction}')
-                else:
-                    st.info(f'Predicted Sentiment: {prediction}')
+    
+    st.header('Home Page')
+    st.subheader('Welcome to the Sentiment Analysis Web App!')
+    st.markdown("""
+        <div style="background-color:#FFA726;padding:10px;border-radius:10px">
+        <h3 style="color:white;text-align:center;">Analyze the sentiment of your text</h3>
+        </div>
+        <br>
+    """, unsafe_allow_html=True)
+    st.write('This app predicts sentiment (Positive, Negative, Neutral) based on user input.')
+    st.write("""
+        Sentiment analysis is a powerful tool used to determine the emotional tone behind a body of text. 
+        It is commonly used in marketing to gauge public opinion, monitor brand and product reputation, 
+        and understand customer experiences. This application allows you to enter any text and get an 
+        instant sentiment prediction.
+    """)
+    st.write("""
+        **How it works:**
+        - **Step 1:** Enter the text you want to analyze in the input box below.
+        - **Step 2:** Click on the 'Predict' button.
+        - **Step 3:** See the predicted sentiment displayed on the screen.
+    """)
+    
+    st.header('Predict Sentiment')
+    text = st.text_area('Enter your comment here:', height=200, placeholder="Type your text here...")
+    if st.button('Predict'):
+        if __model is not None:
+            prediction = get_bias(text)
+            if prediction == "Positive":
+                st.success(f'Predicted Sentiment: {prediction}')
+            elif prediction == "Negative":
+                st.error(f'Predicted Sentiment: {prediction}')
             else:
-                st.error("Model not loaded. Please check the model file.")
+                st.info(f'Predicted Sentiment: {prediction}')
+        else:
+            st.error("Model not loaded. Please check the model file.")
 
-    elif page == 'About':
-        st.header('About')
-        st.markdown("""
-            <div style="background-color:#4CAF50;padding:10px;border-radius:10px">
-            <h3 style="color:white;text-align:center;">About This App</h3>
-            </div>
-            <br>
-        """, unsafe_allow_html=True)
-        st.write('This is a sentiment analysis web application.')
-        st.write('Created by R3X')
+    st.header('About')
+    st.markdown("""
+        <div style="background-color:#FFA726;padding:10px;border-radius:10px">
+        <h3 style="color:white;text-align:center;">About This App</h3>
+        </div>
+        <br>
+    """, unsafe_allow_html=True)
+    st.write('This is a sentiment analysis web application.')
+    st.write('Created by R3X')
 
 if __name__ == '__main__':
     main()
